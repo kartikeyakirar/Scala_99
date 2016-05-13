@@ -15,4 +15,10 @@ object p05 {
       
   }
   
+  def reversee[T](list:List[T]):List[T]= list match 
+  {
+    case List() => list
+    case x::tail => reversee(tail) ++ List(x)
+  }
+  
 }

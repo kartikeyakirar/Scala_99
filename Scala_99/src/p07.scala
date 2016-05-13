@@ -6,11 +6,8 @@
 
 object p07 {
   
-  def flatten(l: List[Any]): List[Any] ={ 
-    def _flatten(list:List[Any],rlist:List[Any]):List[Any]=rlist match {
-    case Nil => Nil
-    case (h:List[_])::tail => _flatten(list:::h,tail)
-    case h::tail => _flatten(list:::List(h),tail)
-    }
-    _flatten(List(),l)
+  def flatten(l: List[Any]): List[Any] =l flatMap{
+    case ms:List[_]=> flatten(ms)
+    case e=>List(e)
+    
 }}
