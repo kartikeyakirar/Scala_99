@@ -167,4 +167,26 @@ pack( List(1,1,1,1,3,3,4,4))                      //> res2: List[List[Int]] = Li
  }                                                //> split: [T](n: Int, l: List[T])(List[T], List[T])
  
  split(3,List(1,2,3,4,5,6,7))                     //> res8: (List[Int], List[Int]) = (List(1, 2, 3),List(4, 5, 6, 7))
+  
+  def slice[T](x:Int,y:Int,list:List[T]):List[T]={
+    
+    val(a,b)=list.zipWithIndex span(e=>(e._2+1)%(x+1)!=0)
+    val(c,d)=b span(e=>(e._2+1)%(y+1)!=0)
+    c.map(_._1)
+  }                                               //> slice: [T](x: Int, y: Int, list: List[T])List[T]
+  
+  
+   slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+                                                  //> res9: List[Symbol] = List('d, 'e, 'f, 'g)
+    def  rotate[T](x:Int,list:List[T]):List[T]={
+   if(x<0)
+     list.drop(list.length + x)++list.take(list.length+x)
+     else
+       list.drop(x) ++ list.take(x)
+ }                                                //> rotate: [T](x: Int, list: List[T])List[T]
+ rotate(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+                                                  //> res10: List[Symbol] = List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b, 'c)
+    
   }
+  
+  
